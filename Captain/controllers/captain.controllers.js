@@ -10,7 +10,7 @@ module.exports.register = async (req, res) => {
         const { name, email, password } = req.body
         const captain = await captainModel.findOne({ email })
         if (captain) {
-            return res.status(400).json({ message: 'captain alreadt exists' })
+            return res.status(400).json({ message: 'captain already present' })
         }
         const hash = await bcrypt.hash(password, 10)
         console.log('hashed password', hash)
